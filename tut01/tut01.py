@@ -7,6 +7,7 @@ for i in l:
     ismerkai=True
     if n/10<1 and n<10:
         mer=mer+1
+        print("yes -",i,"is a Meraki value")
         continue
     else:    
         while n>=10:
@@ -22,6 +23,8 @@ for i in l:
             n=int(n/10)
     if ismerkai:
         mer=mer+1
+        print("Yes -",i,"is a Meraki value")
     else: 
-        nmer=nmer+1 
-print("The input list contains",mer,"meraki values and",nmer,"non merkaivalues")
+        nmer=nmer+1
+        print("No -",i,"is not a Meraki value") 
+print("The input list contains",mer,"Meraki values and",nmer,"Non-meraki values")
