@@ -1,7 +1,6 @@
 
 import os
 def write_to_file(data, file_name):
-    """Writes list of lists into CSV file"""
     with open(file_name, "w") as f:
         for row in data:
             f.write("\n".join((",".join(row))))
