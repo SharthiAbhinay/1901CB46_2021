@@ -17,13 +17,13 @@ def output_by_subject():
             try:
                 with open(f"output_by_subject\\{data[2]}.xlsx"): 
                     wb=Workbook()
-                    sheet=wb.active
-                    sheet.append(data)
+                    sheet1=wb.active
+                    sheet1.append(data)
                     wb.save(f'output_by_subject\\{data[2]}.xlsx')
             except IOError:
                 wb=load_workbook(r'output_by_subject\\{}.xlsx'.format(data[2]))
-                sheet=wb.active
-                sheet.append(data)
+                sheet1=wb.active
+                sheet1.append(data)
                 wb.save(f'output_by_subject\\{data[2]}.xlsx')
     return
  
@@ -41,13 +41,13 @@ def output_individual_roll():
             try:
                 with open(f"output_individual_roll\\{data[0]}.xlsx"): 
                     wb=Workbook()
-                    sheet=wb.active
-                    sheet.append(data)
+                    sheet2=wb.active
+                    sheet2.append(data)
                     wb.save(f'output_individual_roll\\{data[0]}.xlsx')
             except IOError:
                 wb=load_workbook(r'output_individual_roll\\{}.xlsx'.format(data[0]))
-                sheet=wb.active
-                sheet.append(data)
+                sheet2=wb.active
+                sheet2.append(data)
                 wb.save(f'output_individual_roll\\{data[0]}.xlsx')
     return
  
