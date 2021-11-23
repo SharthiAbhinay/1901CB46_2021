@@ -41,13 +41,10 @@ def feedback_not_submitted():
                   c3=course_h.subno==v
                   c4=c2 & c3
                   h1=studentinfo_file[c1]
-                  b=h1.drop("RollNo",axis=1)
                   a=course_h[c4]
-                  newdf=pd.concat([a,b],axis=1)
-                  dg=pd.concat([dg,newdf])
+                  newdf=pd.merge(a, h1, on="rollno", how="outer", indicator=False)
+                  dg=dg.append(newdf,ignore_index=True, sort=False)
     dg.to_excel (r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx', index = False, header=False)             
-
-
 
 
 
