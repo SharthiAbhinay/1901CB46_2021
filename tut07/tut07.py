@@ -40,7 +40,7 @@ def feedback_not_submitted():
                   c3=course_h.subno==v
                   c4=c2 & c3
                   h1=studentinfo_file[c1]
-                  b=h1.drop("rollno",axis=1)
+                  b=h1.drop("RollNo",axis=1)
                   a=course_h[c4]
                   newdf=pd.concat([a,b],axis=1)
                   path=r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx'
@@ -48,7 +48,7 @@ def feedback_not_submitted():
                   writer = pd.ExcelWriter(path, engine='openpyxl')
                   writer.book = workbook
                   writer.sheets = dict((ws.title, ws) for ws in workbook.worksheets)
-                  data_df.to_excel(writer, 'course_feedback_remaining')
+                  newdf.to_excel(writer, 'course_feedback_remaining')
                   writer.save()
                   writer.close()
 
