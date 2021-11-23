@@ -1,5 +1,5 @@
 import pandas as pd
-from openpyxl import load_workbook
+import openpyxl 
 import csv
 def feedback_not_submitted():
     col_list1=["Roll No","Name","email","aemail","contact"]
@@ -44,13 +44,10 @@ def feedback_not_submitted():
                   a=course_h[c4]
                   newdf=pd.concat([a,b],axis=1)
                   path=r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx'
-                  workbook = openpyxl.load_workbook(path)
-                  writer = pd.ExcelWriter(path, engine='openpyxl')
-                  writer.book = workbook
-                  writer.sheets = dict((ws.title, ws) for ws in workbook.worksheets)
-                  newdf.to_excel(writer, 'course_feedback_remaining')
+                  writer = pd.ExcelWriter('course_feedback_remaining.xlsx', engine='openpyxl')
+                  newdf.to_excel(writer, index=False)
+                  newdf.to_excel(writer, startrow=len(df)+2, index=False,header=None)
                   writer.save()
-                  writer.close()
 
 
 
