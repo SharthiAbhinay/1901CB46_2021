@@ -48,7 +48,7 @@ def feedback_not_submitted():
                 writer = pd.ExcelWriter(path, engine='openpyxl')
                 writer.book = workbook
                 writer.sheets = dict((ws.title, ws) for ws in workbook.worksheets)
-                data_df.to_excel(writer, 'course_feedback_remaining.xlsx')
+                data_df.to_excel(writer, 'course_feedback_remaining')
                 writer.save()
                 writer.close()
 
