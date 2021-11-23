@@ -26,6 +26,7 @@ def feedback_not_submitted():
     l=pd.DataFrame(h,columns=['nonzero'])
     h=pd.concat([ans,l],axis=1)
     df=h.set_index('subno').to_dict()['nonzero']
+    dg=pd.DataFrame(columns = ['rollno', 'register_sem', 'schedule_sem','subno','Name','email','aemail','contact'])
     for key,value in d.items():
         for v in value:
             n=df[v]
@@ -43,18 +44,11 @@ def feedback_not_submitted():
                   b=h1.drop("RollNo",axis=1)
                   a=course_h[c4]
                   newdf=pd.concat([a,b],axis=1)
-                  path=r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx'
-                  writer = pd.ExcelWriter(path, engine='openpyxl')
-                  newdf.to_excel(writer, index=False)
-                  newdf.to_excel(writer, startrow=len(df)+2, index=False,header=None)
-                  writer.save()
+                  dg=pd.concat([dg,newdf])
+    dg.to_excel (r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx', index = False, header=False)             
 
 
 
-
-
-     
- 
 
 
 
