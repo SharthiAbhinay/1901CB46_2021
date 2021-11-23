@@ -1,6 +1,4 @@
 import pandas as pd
-import os
-import xlsxwriter
 from openpyxl import load_workbook
 import csv
 def feedback_not_submitted():
@@ -13,6 +11,7 @@ def feedback_not_submitted():
     course_h=pd.read_csv(r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_registered_by_all_students.csv',usecols=col_list3)
     course_regi=pd.read_csv(r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_registered_by_all_students.csv',usecols=col_list2)
     master=pd.read_csv(r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_master_dont_open_in_excel.csv',usecols=m_list)
+    studentinfo_file = studentinfo_file.reindex(columns=col_list1)
     d=course_regi.applymap(str).groupby('rollno')['subno'].apply(list).to_dict()
     c=master['ltp'].str.split('-')
     sf = c.tolist()
@@ -32,25 +31,26 @@ def feedback_not_submitted():
             n=df[v]
             if n==0:
                 continue
-            seriesObj = course_given.apply(lambda x: True if x['stud_roll']==key and x['course_code']==v else False , axis=1)
-            numOfRows = len(seriesObj[seriesObj == True].index)
-            if n>numOfRows:
-                c1=studentinfo_file.rollno==key
-                c2=course_h.rollno==key
-                c3=course_h.subno==v
-                c4=c2 & c3
-                h1=studentinfo_file[c1]
-                b=h1.drop("rollno",axis=1)
-                a=course_h[c4]
-                newdf=pd.concat([a,b],axis=1)
-                path=r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx'
-                workbook = openpyxl.load_workbook(path)
-                writer = pd.ExcelWriter(path, engine='openpyxl')
-                writer.book = workbook
-                writer.sheets = dict((ws.title, ws) for ws in workbook.worksheets)
-                data_df.to_excel(writer, 'course_feedback_remaining')
-                writer.save()
-                writer.close()
+            else:
+               seriesObj = course_given.apply(lambda x: True if x['stud_roll']==key and x['course_code']==v else False , axis=1)
+               numOfRows = len(seriesObj[seriesObj == True].index)
+               if n>numOfRows:
+                  c1=studentinfo_file.rollno==key
+                  c2=course_h.rollno==key
+                  c3=course_h.subno==v
+                  c4=c2 & c3
+                  h1=studentinfo_file[c1]
+                  b=h1.drop("rollno",axis=1)
+                  a=course_h[c4]
+                  newdf=pd.concat([a,b],axis=1)
+                  path=r'C:\Users\shart\OneDrive\Desktop\Python\1901CB46_2021\tut07\course_feedback_remaining.xlsx'
+                  workbook = openpyxl.load_workbook(path)
+                  writer = pd.ExcelWriter(path, engine='openpyxl')
+                  writer.book = workbook
+                  writer.sheets = dict((ws.title, ws) for ws in workbook.worksheets)
+                  data_df.to_excel(writer, 'course_feedback_remaining')
+                  writer.save()
+                  writer.close()
 
 
 
