@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Excelfile</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='styles/output.css') }}>
+  </head>
+<body>
+   <ul>
+   <p>CoinceMarksheet</p>  
+   <div class="container" align="right">
+		<a href="/return_files/" target="blank"><button class='btn btn-default'>Download</button></a>
+   </div>
+   <div class="container">
+    <a href="{{ url_for('back') }}" target="blank"><button class='btn btn-default'>Return</button></a>
+  </div>
+  </ul>
+</body>
+</html>

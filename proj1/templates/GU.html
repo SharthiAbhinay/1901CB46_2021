@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>	
+		<title>MARKSHEET GENERATOR</title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='styles/GU.css') }}>
+        
+    </head>
+	<body>
+		<div class="main">
+			<div class="generate">
+				<h1 id="header">MARKSHEET GENERATOR</h1>
+				<form  class="form"  method="post" enctype="multipart/form-data">
+					<label for="master_roll">Master_Roll : </label>
+					<input type="file" id="master_roll" name="master_roll" required><br>
+					&nbsp;&nbsp;<span>**It must contain
+the names and roll number of all the students of the class</span><br><br>
+					<label for="response">Response : </label>
+					<input type="file" id="response" name="response" required><br>
+					<div class="marks" >
+						<div class="positive">
+						<label for="positivemarks">Positive Marks</label><br>
+						<input type="number" step="0.01" id="positivemarks" name="positivemarks"></div>
+						<div >
+							<label for="negativemarks">Negative Marks</label><br>
+							<input type="number" step="0.01" id="negativemarks" name="negativemarks">
+						</div>
+					</div>
+					<input type="submit" class="submit" id="rollno" name="submit_button" value="Generate Roll No Wise Mark Sheet">
+					<input type="submit" class="submit" id="concise" name="submit_button" value="Generate Concise Mark Sheet">
+					<input type="submit" class="submit" id="email" name="submit_button" value="Send Email">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
+            

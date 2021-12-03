@@ -1,0 +1,13 @@
+.create #subject,#topic,#startdate,#enddate,#duration,#password{
+    width: 96%;
+	padding: 8px 100px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 12px;
+    margin-bottom: 13px;
+}
+html{
+    background-image: url(pic1.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
